@@ -1,3 +1,5 @@
+
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,7 +10,8 @@ module.exports = {
     fontFamily: {
       'mono': ['monospace'],
       'display': ['Oswald' ],
-      'body': ['"Open Sans"'],
+      'body': ['Open Sans'],
+      // 'merra': ['Meera Inimai', 'sans-serif'],
     },
     extend: {},
   },
