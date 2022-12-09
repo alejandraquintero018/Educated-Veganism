@@ -17,7 +17,14 @@ const userSchema = new Schema(
 		password: {
 			type: String,
 			required: true,
-		}
+			minlength: 8, 
+		},
+		links: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: "Link",
+			}
+		]
 	},
 	// set this to use virtual below
 	{

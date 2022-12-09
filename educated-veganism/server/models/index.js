@@ -1,3 +1,5 @@
 const User = require('./User');
+const Link = require('./Link');
 
-module.exports = { User };
+
+module.exports = { User, Link };

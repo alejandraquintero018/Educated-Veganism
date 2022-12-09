@@ -11,11 +11,19 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_ME = gql`
-	query Query {
-		me {
-			username
-			email
-			_id
-		}
-	}
+query Me {
+  me {
+    _id
+    email
+    username
+    links {
+      _id
+      description
+      link
+      name
+      read
+    }
+  }
+}
 `;
+
