@@ -11,7 +11,6 @@ module.exports = {
       'mono': ['monospace'],
       'display': ['Oswald' ],
       'body': ['Open Sans'],
-      // 'merra': ['Meera Inimai', 'sans-serif'],
     },
     extend: {},
   },

@@ -1,80 +1,194 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+//import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 
-// export default function Register () { 
-//     return (
-//         <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
-//   <form>
-//     <div class="form-group mb-6">
-//       <label for="exampleInputEmail2" class="form-label inline-block mb-2 text-gray-700">Email address</label>
-//       <input type="email" class="form-control
-//         block
-//         w-full
-//         px-3
-//         py-1.5
-//         text-base
-//         font-normal
-//         text-gray-700
-//         bg-white bg-clip-padding
-//         border border-solid border-gray-300
-//         rounded
-//         transition
-//         ease-in-out
-//         m-0
-//         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
-//         aria-describedby="emailHelp" placeholder="Enter email">
-//     </div>
-//     <div class="form-group mb-6">
-//       <label for="exampleInputPassword2" class="form-label inline-block mb-2 text-gray-700">Password</label>
-//       <input type="password" class="form-control block
-//         w-full
-//         px-3
-//         py-1.5
-//         text-base
-//         font-normal
-//         text-gray-700
-//         bg-white bg-clip-padding
-//         border border-solid border-gray-300
-//         rounded
-//         transition
-//         ease-in-out
-//         m-0
-//         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputPassword2"
-//         placeholder="Password">
-//     </div>
-//     <div class="flex justify-between items-center mb-6">
-//       <div class="form-group form-check">
-//         <input type="checkbox"
-//           class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-//           id="exampleCheck2">
-//         <label class="form-check-label inline-block text-gray-800" for="exampleCheck2">Remember me</label>
-//       </div>
-//       <a href="#!"
-//         class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
-//         password?</a>
-//     </div>
-//     <button type="submit" class="
-//       w-full
-//       px-6
-//       py-2.5
-//       bg-blue-600
-//       text-white
-//       font-medium
-//       text-xs
-//       leading-tight
-//       uppercase
-//       rounded
-//       shadow-md
-//       hover:bg-blue-700 hover:shadow-lg
-//       focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-//       active:bg-blue-800 active:shadow-lg
-//       transition
-//       duration-150
-//       ease-in-out">Sign in</button>
-//     <p class="text-gray-800 mt-6 text-center">Not a member? <a href="#!"
-//         class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Register</a>
-//     </p>
-//   </form>
-// </div>
-//     )
-// }
+import Logo from '../assets/E.png'
+
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
+import { LOGIN } from '../../utils/mutations';
+import Auth from '../../utils/auth'; 
+
+export default function Register() {
+
+  const [loginData, setLoginData] = useState({
+    username: "",
+    password: ""
+  })
+
+  const [registerData, setRegisterData] = useState({
+    username: "",
+    email: "", 
+    password: ""
+  })
+
+  const [addUser, {error}] = useMutation(ADD_USER)
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+    setRegisterData({...registerData, [name]: value})
+  }
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault(); 
+    try {
+      const {data} = await addUser({ 
+        variables: {...registerData}
+      })
+      console.log(data)
+      Auth.login(data.addUser.token)
+    }
+    catch(err) {
+      console.log(err)
+    }
+    setRegisterData({
+      username: "",
+      email: "", 
+      password: ""
+    }); 
+  }
+
+  return (
+    <>
+      <img
+        className="mx-auto w-1/4 justify-center pt-20 "
+        src={Logo}
+      />
+
+      <div className="flex min-h-full items-center justify-center pb-20 px-6 ">
+        <div className="w-full max-w-md px-5">
+          <div>
+            <h2 className="mt-6 text-center text-5xl font-bold tracking-tight text-gray-900">
+              Register for a new account
+            </h2>
+          </div>
+
+          <form className="mt-8 text-xl space-y-6" action="#" method="POST" onSubmit={handleFormSubmit}>
+            <input type="hidden" name="remember" defaultValue="true" />
+            <div className="-space-y-px rounded-md shadow-sm p-1">
+            <div>
+                <label htmlFor="email-address" className="sr-only text-xl ">
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="username"
+                  type="name"
+                  value={registerData.username}
+                  required
+                  className="text-xl relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
+                  placeholder="Name"
+                  onChange={handleInputChange}
+                />
+
+              </div>
+              <div>
+                <label htmlFor="email-address" className="sr-only text-xl ">
+                  Email address
+                </label>
+                <input
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  value={registerData.email}
+                  autoComplete="email"
+                  required
+                  className="text-xl relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
+                  placeholder="Email address"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={registerData.password}
+                  autoComplete="current-password"
+                  required
+                  className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
+                  placeholder="Password"
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+            <div>
+              <button
+                type="submit"
+                className="group relative flex w-full justify-center rounded-md border border-black py-2 px-4 text-md font-medium hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+              //  onSubmit={handleFormSubmit}
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+
+
+        <div className='px-4'>
+          <div className="w-full max-w-md">
+            <div>
+
+              <h2 className="mt-6 text-center text-5xl font-bold tracking-tight text-gray-900">
+                Sign in to your account
+              </h2>
+
+            </div>
+          </div>
+
+          <form className="mt-8 text-xl space-y-6 px-4 py-0" action="#" method="POST">
+            <input type="hidden" name="remember" defaultValue="true" />
+            <div className="-space-y-px rounded-md shadow-sm">
+              <div>
+                <label htmlFor="email-address" className="sr-only text-xl ">
+                  Email address
+                </label>
+                <input
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="text-xl relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm"
+                  placeholder="Email address"
+                  // onChange={handleInputChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
+                  placeholder="Password"
+                  // onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="group relative flex w-full justify-center rounded-md border border-black  py-2 px-4 text-md font-medium hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
+                // onSubmit={handleFormSubmit}
+              >
+                Sign in
+              </button>
+            </div>
+
+          </form>
+
+
+        </div>
+
+      </div>
+    </>
+  )
+}

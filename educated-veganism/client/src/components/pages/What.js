@@ -1,30 +1,73 @@
 //import { motion } from 'framer-motion';
 import React from 'react';
+import AddBtn from '../AddBtn.js';
+
+import { useQuery } from '@apollo/client';
+import { QUERY_LINK } from '../../utils/queries.js';
+import Richroll from '../assets/richRoll.jpeg';
+
 
 
 export default function What() {
+
+    const { loading, data } = useQuery(QUERY_LINK);
+
+    console.log(data);
+
+    if (loading) {
+        return <h1 className='text-center'> This page is taking a while to load. </h1>;
+    }
+    const whatCategory = data?.links || [];
+    console.log(whatCategory);
+    const what = whatCategory?.filter(link => link.category === 'What')
+
     return (
 
-        <section>
-            <h1 className=" col-span-2 mx-auto text-9xl font-light text-center">
-                What?
-            </h1>
+        <section className="pt-48 pb-20">
+            <div >
+                <h1 className=" text-8xl font-light text-center">
+                    What is Veganism?
+                </h1>
 
-            <p>
-                Something insightful
+                <p className="pt-48 text-center text-3xl">
+                    Living a plant-based lifestyle can mean a lot of different things to alot of different people.
 
-            </p>
+                </p>
+
+                {what.map((link) => (
+                    <>
+
+                        <a target="_blank" className='col-span-1' href={link.link} >
+
+                            <div className='col-span-1 mx-auto mt-6 py-5 '>
+
+                                <h1 className='text-2xl'>
+                                    {link.name}
+                                </h1>
+
+                                <p>
+                                    {link.description}
+                                </p>
 
 
-            <div class="flex justify-center">
-                <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
-                    <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Card title</h5>
-                    <p class="text-gray-700 text-base mb-4">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.
-                    </p>
-                    <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-                </div>
+                            </div>
+                        </a>
+
+                        <div className='text-center w-96rem mx-auto'>
+                            < AddBtn />
+                        </div>
+
+                        <img className="mx-auto col-start-2 rounded-lg w-1/2 max-h-[32rem] py-4" src={Richroll} />
+
+                        <div className='text-center w-96rem mx-auto'>
+                            < AddBtn />
+                        </div>
+
+
+                    </>
+                ))}
+
+
             </div>
 
 

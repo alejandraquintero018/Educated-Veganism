@@ -27,3 +27,13 @@ query Me {
 }
 `;
 
+export const QUERY_LINK = gql`
+query Links {
+  links {
+    category
+    description
+    link
+    name
+  }
+}`; 
+
