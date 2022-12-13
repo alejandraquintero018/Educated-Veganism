@@ -9,7 +9,6 @@ import fiberFueled from "../assets/fiberFueled.png";
 import notToDie from "../assets/howNotToDie.jpeg";
 import seaspiracy from "../assets/seaspiracy.jpeg";
 
-
 export default function Why() {
 
     const imagesPool = [

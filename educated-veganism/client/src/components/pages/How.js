@@ -57,7 +57,7 @@ export default function How() {
 
                     <a target="_blank" className='col-span-1' href={link.link} >
 
-                        <div className='col-span-1 col-start-2 mx-auto mt-6 '>
+                        <div className=' mx-auto mt-6 '>
 
                             <h1 className='col-span-1 text-2xl'>
                                 {link.name}
@@ -67,11 +67,12 @@ export default function How() {
                                 {link.description}
                             </p>
                         </div>
-
-                        <img className="mx-auto col-span-2 rounded-lg w-1/2 " src={link.src} />
                     </a>
 
-                    <div className='mx-auto text-center'>
+                    <img className="mx-auto col-span-2 rounded-lg w-1/2 pb-3 py-4" src={link.src} />
+
+
+                    <div className='mx-auto text-center w-96rem mx-auto pb-4'>
 
                         < AddBtn />
 

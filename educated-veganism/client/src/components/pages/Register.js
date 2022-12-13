@@ -15,6 +15,31 @@ export default function Register() {
     password: ""
   })
 
+  const [login, {err}] = useMutation(LOGIN)
+
+  const handleLoginChange = (event) => {
+    const { name, value } = event.target
+    setLoginData({...loginData, [name]: value })
+  }
+
+  const handleLoginSubmit = async (event) => {
+    event.preventDefault(); 
+    try { 
+      const {data} = await login({
+        variables: {...loginData}
+      })
+      console.log(data)
+      Auth.login(data.addUser.token)
+    }
+    catch (err) {
+      console.log(err)
+    }
+    setLoginData({
+      username: "",
+      password: ""
+    })
+  }
+
   const [registerData, setRegisterData] = useState({
     username: "",
     email: "", 
@@ -25,7 +50,7 @@ export default function Register() {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
-    setRegisterData({...registerData, [name]: value})
+    setRegisterData({...registerData, [name]: value })
   }
 
   const handleFormSubmit = async (event) => {
@@ -118,7 +143,6 @@ export default function Register() {
               <button
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md border border-black py-2 px-4 text-md font-medium hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
-              //  onSubmit={handleFormSubmit}
               >
                 Register
               </button>
@@ -138,7 +162,7 @@ export default function Register() {
             </div>
           </div>
 
-          <form className="mt-8 text-xl space-y-6 px-4 py-0" action="#" method="POST">
+          <form className="mt-8 text-xl space-y-6 px-4 py-0" action="#" method="POST" onSubmit={handleLoginSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -153,7 +177,7 @@ export default function Register() {
                   required
                   className="text-xl relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm"
                   placeholder="Email address"
-                  // onChange={handleInputChange}
+                  onChange={handleLoginChange}
                 />
               </div>
               <div>
@@ -168,7 +192,7 @@ export default function Register() {
                   required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
                   placeholder="Password"
-                  // onChange={handleInputChange}
+                  onChange={handleLoginChange}
                 />
               </div>
             </div>
@@ -177,7 +201,6 @@ export default function Register() {
               <button
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md border border-black  py-2 px-4 text-md font-medium hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
-                // onSubmit={handleFormSubmit}
               >
                 Sign in
               </button>

@@ -2,10 +2,9 @@
 import React from 'react';
 import AddBtn from '../AddBtn.js';
 
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_LINK } from '../../utils/queries.js';
 import Richroll from '../assets/richRoll.jpeg';
-
 
 
 export default function What() {
@@ -31,7 +30,6 @@ export default function What() {
 
                 <p className="pt-48 text-center text-3xl">
                     Living a plant-based lifestyle can mean a lot of different things to alot of different people.
-
                 </p>
 
                 {what.map((link) => (
