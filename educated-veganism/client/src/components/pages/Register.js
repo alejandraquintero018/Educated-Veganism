@@ -150,7 +150,6 @@ export default function Register() {
           </form>
         </div>
 
-
         <div className='px-4'>
           <div className="w-full max-w-md">
             <div>
@@ -173,6 +172,7 @@ export default function Register() {
                   id="email-address"
                   name="email"
                   type="email"
+                  value={loginData.email}
                   autoComplete="email"
                   required
                   className="text-xl relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm"
@@ -188,6 +188,7 @@ export default function Register() {
                   id="password"
                   name="password"
                   type="password"
+                  value={loginData.password}
                   autoComplete="current-password"
                   required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"

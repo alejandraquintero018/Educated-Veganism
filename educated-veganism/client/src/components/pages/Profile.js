@@ -6,9 +6,13 @@ import Auth from '../../utils/auth';
 
 export default function Profile() {
 
-    const { loading, data:meData } = useQuery(QUERY_ME);
+    const { loading, data } = useQuery(QUERY_ME);
 
-    console.log(meData);
+    const me = data?.me || {};
+    const links = data?.me.links || [];
+     // console.log(me.links); 
+
+    console.log(me.links);
 
     if (!Auth.loggedIn()) {
         return <Navigate to="/register" />;
@@ -18,19 +22,36 @@ export default function Profile() {
         return <h1 className='text-center'> This page is taking a while to load </h1>
     }
 
+        
+
     return (
 
         <main className='pt-20'>
-            {Auth.loggedIn() && meData? (
-                <h1 className='col-span-2 mx-auto text-6xl  text-center'> Welcome back {meData.me.username}</h1>
+            {Auth.loggedIn() && me? (
+                <h1 className='col-span-2 mx-auto text-6xl  text-center'> Welcome back {me.username}</h1>
             ): (null)}
 
             <div className='col-span-2 mx-auto text-4xl h-screen py-10'> Your Library 
 
-            {Auth.loggedIn() && meData? (
-                <div>
-                    <h2>{meData.me.links.name}</h2>
-                </div>
+            {Auth.loggedIn() && me? (
+                <ul>
+                    <h1>test</h1>
+
+                
+                    {links.map(link => {
+                        return (
+                            <li>{link.name}</li>
+                        );
+                    })}
+                </ul>
+                
+                
+                // <div>
+                //     {me.map((medata) => (
+                //     <h2>{medata.me.links.name}</h2>
+                //     ))}
+    
+                // </div>
             ) : (null)}
 
             </div>

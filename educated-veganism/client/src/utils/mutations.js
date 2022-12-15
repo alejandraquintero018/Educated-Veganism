@@ -18,7 +18,6 @@ mutation login($email: String!, $password: String!) {
       email
       links {
         name
-        read
         link
         description
         _id
@@ -28,3 +27,20 @@ mutation login($email: String!, $password: String!) {
   }
 }
 `
+
+export const ADD_LINK = gql`
+mutation saveLinks($linkId: ID!) {
+  saveLinks(linkId: $linkId) {
+    _id
+    email
+    password
+    username
+    links {
+      _id
+      description
+      link
+      name
+      category
+    }
+  }
+}`
