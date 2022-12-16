@@ -8,10 +8,16 @@ const typeDefs = gql`
 		email: String
 		password: String
 		links: [Link]!
+		notes: [Note]
+	}
+
+	type Note {
+		note: String
+		linkId: ID
 	}
 
 	type Category {
-	name: String
+		name: String
 	}
 
 	type Auth {
@@ -36,6 +42,7 @@ const typeDefs = gql`
 		addUser(username: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
 		saveLinks(linkId: ID!): User
+		addNote(linkId: ID!, note:String!): User
 	}
 `;
 

@@ -49,6 +49,14 @@ const resolvers = {
 
 			throw new AuthenticationError('you must be logged in to see your links');
 
+		},
+		addNote: async (parent, { linkId, note }, context) => {
+			if(context.user) {
+				const user = await User.findByIdAndUpdate({ _id: context.user._id}, { $push: { notes: { linkId, note } } }, { new: true })
+				return user
+			}
+
+			throw new AuthenticationError('you must be logged in to make notes');
 		}
 	},
 };

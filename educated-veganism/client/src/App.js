@@ -49,7 +49,7 @@ const navigation = [
   { name: 'What?', href: '/what' },
   { name: 'Why?', href: '/why' },
   { name: 'How?', href: '/how' },
-  { name: 'Contribute', href: '/contribute' },
+  { name: 'Suggest', href: '/suggest' },
   { name: 'Profile', href: '/me' }
 ]
 
@@ -80,7 +80,7 @@ export default function Main() {
 
             <div className=" lg:flex lg:min-w-0 lg:flex-1 pl-20 lg:justify-end">
 
-              {Auth.loggedIn() ? (<a> logout </a>) : (<a href="/register" className=" font-light text-3xl hover:text-orange-300">
+              {Auth.loggedIn() ? (<a className=" font-light text-3xl hover:text-orange-300" href="/" onClick={Auth.logout}> Logout</a>) : (<a href="/register" className=" font-light text-3xl hover:text-orange-300">
                 Register / Log in
               </a>)}
             </div>
@@ -111,7 +111,7 @@ export default function Main() {
                   element={<How />}
                 />
                 <Route
-                  path="/contribute"
+                  path="/suggest"
                   element={<Contribute />}
                 />
                 <Route

@@ -1,25 +1,25 @@
 [ {
     "name": "Fiber Fueled",
     "link": "https://www.amazon.com/Fiber-Fueled-Plant-Based-Optimizing-Microbiome-ebook/dp/B07ZY7J2XW/ref=sr_1_1?keywords=fiber+fueled+by+dr.+will+bulsiewicz&qid=1670366197&sprefix=Fiber+Fuel%2Caps%2C164&sr=8-1",
-    "description": "Book", 
+    "description": "Book - Available on Kindle. Author also has a Masterclass on improving gut health", 
     "category": "Why"
 },
 {
     "name": "How Not to Die",
     "link": "https://www.amazon.com/How-Not-Die-Discover-Scientifically-ebook/dp/B00Y7USB14/ref=sr_1_1?keywords=how+not+to+die+book&qid=1670366247&sprefix=how+not+to+%2Caps%2C162&sr=8-1",
-    "description": "Book - currently available to read for free on Kindle",
+    "description": "Book - currently available to read for free on Kindle.",
     "category": "Why"
 },
 {
     "name": "Seaspiracy",
     "link": "https://www.youtube.com/watch?v=1Q5CXN7soQg",
-    "description": "Documentary",
+    "description": "Documentary available on Netflix",
     "category": "Why"
 },
 {
     "name": "This is Vegan Propaganda by Ed Winters",
     "link": "https://earthlinged.org/",
-    "description": "Book",
+    "description": "Book Ed Winters also hosts a Youtube channel",
     "category": "Why"
 },
 {
@@ -31,7 +31,7 @@
 {
     "name": "Neto Craves",
     "link": "netocraves.com",
-    "description": " Recipe EBook/Meal Planner",
+    "description": "Vegan Recipe EBook/Meal Planner",
     "category": "How"
 }, 
 {
@@ -43,7 +43,7 @@
 {
     "name": "Minimalist Baker",
     "link": "https://minimalistbaker.com/",
-    "description": "Food Blog with variety of vegan recipes",
+    "description": "Food Blog with variety of simple vegan recipes",
     "category": "How"
 }
 

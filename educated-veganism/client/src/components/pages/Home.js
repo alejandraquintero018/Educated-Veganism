@@ -14,19 +14,27 @@ export default function () {
 
                 <p className="pt-48 text-2xl">
                     The Internet is known for misinformation that can range from satirical to harmful. When it comes to veganism, the internet is no different.
-                    From sensational headlines of parents contributing to their child’s untimely death through vegan diets to exaggerated claims of major organizations such as PETA.
-                    There is no shortage of misinformation regarding a plant based lifestyle.
+                    From sensational headlines of parents contributing to their child’s untimely death through vegan diets to exaggerated claims of major organizations such as PETA,
+                    the internet is cluttered with exessive, judgemental and misleading information.
                 </p>
             </div>
 
-            <p className="col-span-2 mt-6 pt-48 text-2xl text-center">
-                The aim of Educated Veganism is to give everyone access to some of the most well researched and reliable information available out there.
-                From books and podcasts explaining the benefits of a plant based lifestyle not only to yourself but to the environment as well.
-            </p>
+            <div className="col-span-2 col-start-1 mx-auto content-end">
+                <p className="mt-6 mx-10 pt-20 text-2xl">
+                    The mission of Educated Veganism is to give everyone access to a narrowed down high quality
+                    resources ranging from books to podcasts to documentaries and blogs aimed to simplify and demystify veganism.
+                </p>
 
-            {/* <p className="mt-6 pt-10 text-2xl text-center">
+            </div>
 
-            </p> */}
+            <div className="col-span-2 col-start-2 mx-auto content-end">
+
+                <p className="pt-20 text-2xl">
+                    Educated Veganism has purposely been left private as well as minimal
+                    to give you a private space to explore the what, the why and the how behind a plant based lifestyle leaving out the distractions, pressure and judgement
+                    that come with social media and the exessive information that is found on the internet.
+                </p>
+            </div>
 
         </section>
 

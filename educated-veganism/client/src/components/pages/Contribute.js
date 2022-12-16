@@ -8,10 +8,10 @@ export default function Contribute() {
         <section className="pt-48">
 
                 <h1 className=" col-span-2 mx-auto text-7xl  text-center">
-                    Want to Contribute?
+                    Have Suggestions?
                 </h1>
 
-                <p className=" py-10 col-span-2 mx-auto text-center">
+                <p className=" text-lg py-10 col-span-2 mx-auto text-center">
 
                     Fill out the form below to suggest content that you believe would benefit others through thier plant-based journey.
                 </p>
@@ -23,7 +23,7 @@ export default function Contribute() {
 
                                 <div className="grid grid-cols-6 gap-6">
                                     <div className="col-span-6 sm:col-span-3">
-                                        <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="first-name" className="block font-medium text-gray-700">
                                             First name
                                         </label>
                                         <input
@@ -36,7 +36,7 @@ export default function Contribute() {
                                     </div>
 
                                     <div className="col-span-6 sm:col-span-3">
-                                        <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
+                                        <label htmlFor="last-name" className="block font-medium text-gray-700">
                                             Last name
                                         </label>
                                         <input
@@ -62,7 +62,7 @@ export default function Contribute() {
                                     </div>
 
                                     <div className="col-span-6 sm:col-span-4">
-                                        <label htmlFor="url" className="block text-sm font-md text-gray-700">
+                                        <label htmlFor="url" className="block font-md text-gray-700">
                                             URL of where we can find the content
                                         </label>
                                         <input

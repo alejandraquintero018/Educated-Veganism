@@ -1,9 +1,9 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Meera+Inimai&family=Poppins:wght@500&family=Sawarabi+Mincho&family=Varela+Round&display=swap'); */
 
-h1, h2, h3, h4, button, nav {
+h1, h2, h3, h4, nav {
   font-family: 'Sawarabi Mincho', 'serif';
 }
 
-p {
-  font-family: 'Meera Inimai';
+p, button, label, input {
+  font-family: 'Noto Serif KR', serif;;
 }

@@ -1,4 +1,4 @@
-//import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import React from 'react';
 import AddBtn from '../AddBtn.js';
 
@@ -14,56 +14,86 @@ export default function What() {
     console.log(data);
 
     if (loading) {
-        return <h1 className='text-center'> This page is taking a while to load. </h1>;
+        return <div>
+            <div class="flex justify-center items-center pt-48 h-screen">
+                <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-[#FED9B7]" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+        </div>;
     }
     const whatCategory = data?.links || [];
     console.log(whatCategory);
     const what = whatCategory?.filter(link => link.category === 'What')
 
     return (
+        <section className="pt-48 pb-20 max-w-100">
 
-        <section className="pt-48 pb-20">
-            <div >
-                <h1 className=" text-8xl font-light text-center">
-                    What is Veganism?
-                </h1>
+            <h1 className="text-8xl font-light text-center">
+                What?
+            </h1>
 
-                <p className="pt-48 text-center text-3xl">
-                    Living a plant-based lifestyle can mean a lot of different things to alot of different people.
-                </p>
+            <div className="grid grid-col-3 mx-auto max-w-100  px-6 lg:px-8 pb-20">
 
-                {what.map((link) => (
-                    <>
+                <div className="col-span-1 col-start-2 pt-20 mx-auto content-end">
+                    <p className="text-2xl text-center">
+                        What is Educated Veganism? Educated Veganism is approaching a plant-based lifestyle with intentionality, knowledge, purpose and balance.
+                        Rich Roll hosts a podcast, has a plant-based Masterclass, and is the author of several books whose content surrounds around what it means to live an intentional plant-based lifestyle. 
+                    </p>
+                </div>
 
-                        <a target="_blank" className='col-span-1' href={link.link} >
+            </div>
 
-                            <div className='col-span-1 mx-auto mt-6 py-5 '>
+            <div class="grid grid-col-2 grid-flow-col gap-4 text-center mx-auto">
 
-                                <h1 className='text-2xl'>
-                                    {link.name}
-                                </h1>
+                <div class="col-span-1 text-center ml-20 flex flex-col space-y-40 place-items-end">
+                    {what.map((data) => (
 
-                                <p>
-                                    {link.description}
-                                </p>
+                        <div className=' text-center mx-auto place-items-end border-2 border-[#243c5a] hover:shadow-lg outline-offset-8 rounded-lg'>
 
+                            <div className=' p-4'>
+
+                                <a target="_blank" href={data.link}>
+
+                                    <h1 className='text-2xl'>
+                                        {data.name}
+                                    </h1>
+
+                                    <p>
+                                        {data.description}
+                                    </p>
+                                </a>
 
                             </div>
-                        </a>
 
-                        <div className='text-center w-96rem mx-auto'>
-                            < AddBtn />
+                            <div className='pt-10 pb-0'>
+                                <AddBtn linkId={data._id} />
+                            </div>
+
                         </div>
+                    ))}
 
-                        <img className="mx-auto col-start-2 rounded-lg w-1/2 max-h-[32rem] py-4" src={Richroll} />
+                </div>
 
-                        <div className='text-center w-96rem mx-auto'>
-                            < AddBtn />
-                        </div>
+                <div class=" col-span-1 content-start">
+                
+                        <motion.div 
+                            initial={{ opacity: 0, y: 300 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            animate={{ y: 100 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                type: 'spring',
+                                bounce: 0.25,
+                                duration: 2.5,
+                                delay: 0.5,
+                                ease: [0, 0.71, .5, 1.01]
+                            }}>
 
+                    <img className="mx-auto w-1/2 pb-12 w-auto h-[32rem] pb-20 rounded-lg" src={Richroll} />
+                    </motion.div>
 
-                    </>
-                ))}
+                </div>
 
 
             </div>

@@ -44,3 +44,24 @@ mutation saveLinks($linkId: ID!) {
     }
   }
 }`
+
+export const ADD_NOTE = gql`
+mutation addNote($linkId: ID!, $note: String!) {
+  addNote(linkId: $linkId, note: $note) {
+    notes {
+      note
+      linkId
+    }
+    _id
+    email
+    password
+    username
+    links {
+      _id
+      category
+      description
+      link
+      name
+    }
+  }
+}`

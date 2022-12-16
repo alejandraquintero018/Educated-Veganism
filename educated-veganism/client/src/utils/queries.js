@@ -14,13 +14,19 @@ export const QUERY_ME = gql`
  {
   me {
     _id
-    email
     username
+    email
+    password
     links {
       _id
-      description
-      link
       name
+      link
+      description
+      category
+    }
+    notes {
+      note
+      linkId
     }
   }
 }
@@ -35,5 +41,5 @@ query Links {
     link
     name
   }
-}`; 
+}`;
 

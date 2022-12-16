@@ -1,10 +1,10 @@
-//import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import React from 'react';
 import AddBtn from '../AddBtn.js';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_LINK, QUERY_ME } from '../../utils/queries.js';
-import edWinters from "../assets/edWinters.jpeg";
+import edWinters from "../assets/EdWinters.jpeg";
 import fiberFueled from "../assets/fiberFueled.png";
 import notToDie from "../assets/howNotToDie.jpeg";
 import seaspiracy from "../assets/seaspiracy.jpeg";
@@ -23,7 +23,13 @@ export default function Why() {
     console.log(data);
 
     if (loading) {
-        return <div> This page is taking a while to load... </div>;
+        return <div>
+            <div class="flex justify-center items-center pt-48 h-screen">
+                <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-[#FED9B7]" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+        </div>;
     }
     const whyCategory = data?.links || [];
     console.log(whyCategory);
@@ -44,7 +50,7 @@ export default function Why() {
         <section className="pt-48 pb-20">
 
 
-            <h1 className=" col-span-2 mx-auto text-9xl font-light text-center">
+            <h1 className=" mx-auto text-9xl font-light text-center">
                 Why?
             </h1>
 
@@ -69,71 +75,73 @@ export default function Why() {
 
             </div>
 
+            <div class="grid grid-col-2 grid-flow-col text-center mx-auto">
 
-
-            <div class="grid grid-col-2 grid-flow-col gap-4 text-center mx-auto">
-
-                <div class="col-span-1 text-center ml-20 flex flex-col space-y-40 place-items-end">
+                <div class="col-span-1 text-center flex flex-col space-y-64 pt-10 place-items-end">
                     {why.map((data) => (
 
-                        <div className=' text-center mx-auto place-items-end'>
+                        <motion.div 
+                            initial={{ opacity: 0, y: 250 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                type: 'spring',
+                                bounce: 0.25,
+                                duration: 2.5,
+                                delay: 0.5,
+                                ease: [0, 0.71, .5, 1.01]
+                            }}>
 
-                            <div className='hover:bg-orange-300'>
+                            <div className=' text-center mx-auto border-2 pb-8 border-[#243c5a] min-w-max max-w-4xl max-h-52 rounded-lg'>
 
-                            <a target="_blank" href={data.link}>
+                                <div className='p-4 hover:bg-[#FED9B7]'>
 
-                                <h1 className='text-2xl'>
-                                    {data.name}
-                                </h1>
+                                    <a target="_blank" href={data.link}>
 
-                                <p>
-                                    {data.description}
-                                </p>
-                            </a>
+                                        <h1 className='text-2xl'>
+                                            {data.name}
+                                        </h1>
+
+                                        <p>
+                                            {data.description}
+                                        </p>
+                                    </a>
+
+                                </div>
+
+                                <div className='py-4 pb-0'>
+                                    <AddBtn linkId={data._id} />
+                                </div>
 
                             </div>
-
-                            <div className='pt-10 pb-0'>
-                                <AddBtn linkId={data._id} />
-                            </div>
-
-                        </div>
+                        </motion.div>
                     ))}
 
                 </div>
 
                 <div class=" col-span-2 content-start">
                     {imagesPool.map((data) => (
-                        <img className="mx-auto col-span-1 w-1/2 pb-12 rounded-lg" src={data.src} />
+                        <motion.div 
+                            initial={{ opacity: 0, y: 250 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            // animate={{ y: 100 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                type: 'spring',
+                                bounce: 0.25,
+                                duration: 2.5,
+                                delay: 0.5,
+                                ease: [0, 0.71, .5, 1.01]
+                            }}>
 
+                            <img className="mx-auto col-span-1 w-auto h-[29rem] pb-24 rounded-lg" src={data.src} />
+                        </motion.div>
                     ))}
                 </div>
 
+
+
             </div>
-
-            {/* {result.map((link) => (
-                <div className='py-2'>
-                    <a target="_blank" href={link.link}>
-                        <h1 className=' text-2xl'>
-                            {link.name}
-                        </h1>
-                        <p>
-                            {link.description}
-                        </p>
-                    </a>
-                    <div>
-                        <img className="mx-auto rounded-lg w-1/2 max-h-[32rem] pb-3 py-4" src={link.src} />
-                    </div>
-
-                    <div className='text-center w-96rem mx-auto pb-4'>
-                        < AddBtn />
-                    </div>
-
-                </div>
-
-            ))} */}
-
-
 
         </section>
 

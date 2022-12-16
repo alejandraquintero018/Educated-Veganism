@@ -1,6 +1,6 @@
-//import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import React from 'react';
-//import AddBtn from '../AddBtn.js';
+import AddBtn from '../AddBtn.js';
 
 import { QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
@@ -50,7 +50,13 @@ export default function How() {
     console.log(data);
 
     if (loading) {
-        return <div> This page is taking a while to load. </div>;
+        return <div>
+            <div class="flex justify-center items-center pt-48 h-screen">
+                <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-[#FED9B7]" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+        </div>;
     }
     const howCategory = data?.links || [];
     console.log(howCategory);
@@ -90,54 +96,71 @@ export default function How() {
                     Below are some vegan food blogs to get you started on your plant-based journey.
                 </p>
 
-                <p className="col-span-2 col-start-2 mt-6 pt-10 text-2xl">
-                    There a several different blogs which cover a range of different eating styles
-                </p>
+
             </div>
 
 
-            <div className="grid grid-col-2 grid-flow-col text-center mx-auto">
+            <div class="grid grid-col-2 grid-flow-col text-center mx-auto">
 
-                <div className="col-span-1 text-center ml-20 flex flex-col space-y-40 place-items-end">
+                <div class="col-span-1 text-center flex flex-col space-y-64 pt-10 place-items-end">
                     {how.map((data) => (
 
-                        <div key={data.linkId} className=' text-center mx-auto place-items-end '>
+                        <motion.div
+                            initial={{ opacity: 0, y: 250 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                type: 'spring',
+                                bounce: 0.25,
+                                duration: 2.5,
+                                delay: 0.5,
+                                ease: [0, 0.71, .5, 1.01]
+                            }}>
 
-                            <div className='hover:bg-orange-300'>
+                            <div className='text-center mx-auto border-2 pb-8 border-[#243c5a] rounded-lg'>
 
-                                <a target="_blank" href={data.link}>
+                                <div className='hover:bg-[#FED9B7] p-4'>
 
-                                    <h1 className='text-2xl'>
-                                        {data.name}
-                                    </h1>
+                                    <a target="_blank" href={data.link}>
 
-                                    <p>
-                                        {data.description}
-                                    </p>
-                                </a>
+                                        <h1 className='text-2xl'>
+                                            {data.name}
+                                        </h1>
+
+                                        <p>
+                                            {data.description}
+                                        </p>
+                                    </a>
+
+                                </div>
+
+                                <div className='pt-10 pb-0'>
+                                    <AddBtn linkId={data._id} />
+                                </div>
 
                             </div>
+                        </motion.div>
 
-                            {/* <div className='pt-10 pb-0'>
-                                {Auth.loggedIn() && meData ? (
-                                    <button type="button"
-                                        onClick={() => handleAddLink()}
-                                        class="inline-block px-6 py-4 bg-transparent font-semibold 
-                                text-md uppercase rounded hover:bg-orange-300 focus:bg-gray-100 focus:outline-none 
-                                    focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out">Add To Library</button>) :
-                                    (null)}
-                            </div> */}
-
-                        </div>
                     ))}
 
                 </div>
 
-                <div className=" col-span-2 content-start ">
+                <div class=" col-span-2 content-start">
                     {imagesPool.map((data) => (
-
-                        <img key={data.src} className="mx-auto col-span-1 w-1/2 max-h-96 rounded-lg pb-12" src={data.src} />
-
+                        <motion.div 
+                        initial={{ opacity: 0, y: 250 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        // animate={{ y: 100 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            type: 'spring',
+                            bounce: 0.25,
+                            duration: 2.5,
+                            delay: 0.5,
+                            ease: [0, 0.71, .5, 1.01]
+                        }}>
+                        <img className="mx-auto col-span-1 w-auto h-[29rem] pb-24 rounded-lg" src={data.src} />
+                        </motion.div>
                     ))}
                 </div>
 

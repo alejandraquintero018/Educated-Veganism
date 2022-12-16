@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const noteSchema = require("./Notes")
 
 const userSchema = new Schema(
 	{
@@ -24,7 +25,8 @@ const userSchema = new Schema(
 				type: Schema.Types.ObjectId,
 				ref: "Link",
 			}
-		]
+		],
+		notes: [noteSchema]
 	},
 	// set this to use virtual below
 	{
