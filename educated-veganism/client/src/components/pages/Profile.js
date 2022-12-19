@@ -34,10 +34,10 @@ export default function Profile() {
             console.log(data)
             Auth.login(data.addNote.token)
         } catch (err) {
-            console.log(err)    
+            console.log(err)
         }
         setNoteData({
-            note:""
+            note: ""
         });
 
     }
@@ -58,7 +58,7 @@ export default function Profile() {
 
     return (
 
-        <main className='pt-20 h-screen'>
+        <main className='pt-20 min-h-screen'>
             {Auth.loggedIn() && me ? (
                 <h1 className='col-span-2 mx-auto text-6xl  text-center'> Welcome back to your library {me.username}</h1>
             ) : (null)}
@@ -67,43 +67,54 @@ export default function Profile() {
                 {Auth.loggedIn() && me ? (
                     < div className='py-10'>
                         {links.map((link) => (
-                            // return (
 
-                            <div key={link._id}className="flex justify-center py-4">
-                                <div className="block p-6 rounded-lg shadow-lg border-[#0081A7] bg-white w-3/4 ">
-                                    <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">{link.name}</h5>
-                                    <p class="text-gray-700 text-base mb-4">
-                                        {link.description}
-                                        {link._id}
-                                    </p>
 
-                                    <form onSubmit={handleNoteSubmit}>
-                                        <div class="flex justify-center">
-                                            <div class="mb-3 xl:w-96">
-                                                <label for="exampleFormControlTextarea1" class="form-label inline-block mb-2 text-gray-700">
-                                                    Example textarea</label>
-                                                <textarea
-                                                    className="form-control w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                                    id="note"
-                                                    rows="3"
-                                                    name="note"
-                                                    type="input"
-                                                    value={noteData.note}
-                                                    placeholder="Your message"
-                                                    onChange={handleNoteChange}>
-                                                </textarea>
-                                            </div>
-                                        </div>
-                                        <a>
-                                            <button type="submit" className=" inline-block px-6 py-2.5 bg-[#0081A7] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#00AFB9]} hover:shadow-lg focus:bg-orange-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Add Note</button>
+                            <div key={link._id} className=" flex justify-center py-4">
+
+                                <div className=" grid grid-col-2 block p-6 rounded-lg shadow-lg border-[#0081A7] bg-white w-3/4 ">
+
+                                    <div className="col-span-1">
+                                        <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">{link.name}</h5>
+                                        <p class="text-gray-700 text-base mb-4">
+                                            {link.description}
+                                        </p>
+                                        <a href={link.link}>
+                                            <button type="button" className=" inline-block px-6 py-2.5 bg-[#0081A7] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#00AFB9] hover:shadow-lg focus:bg-orange-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Go to resource</button>
                                         </a>
-                                    </form>
 
-                                    <p>{me.notes.note}</p>
+                                    </div>
 
-                                    <a href={link.link}>
-                                        <button type="button" className=" inline-block px-6 py-2.5 bg-[#0081A7] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#00AFB9]} hover:shadow-lg focus:bg-orange-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Go to resource</button>
-                                    </a>
+                                    <div className="col-span-1 col-start-2">
+                                        <h3> Your Notes </h3>
+
+                                        <p>{me.notes.note}</p>
+
+                                        <form onSubmit={handleNoteSubmit}>
+                                            <div className="flex justify-center">
+                                                <div className="mb-3 xl:w-full">
+                                                    <textarea
+                                                        className="form-control w-full text-base font-normal bg-white border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:bg-white focus:border-[#00AFB9] focus:outline-none"
+                                                        id="note"
+                                                        rows="2"
+                                                        name="note"
+                                                        type="input"
+                                                        value={noteData.note}
+                                                        onChange={handleNoteChange}>
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                            <a>
+                                                <button type="submit" className=" inline-block px-6 py-2.5 bg-[#0081A7] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#00AFB9] hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Add Note</button>
+                                            </a>
+                                        </form>
+
+
+
+
+
+                                    </div>
+
+
                                 </div>
                             </div>
                         ))}

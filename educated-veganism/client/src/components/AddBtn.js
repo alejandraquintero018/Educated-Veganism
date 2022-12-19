@@ -29,7 +29,7 @@ export default function AddBtn({ linkId }) {
     };
 
     if (loading) {
-        return <h2 className="text-center">This page is taking a while to load </h2>;
+        return <h2 className="text-center">This is taking a while to load </h2>;
     }
 
     return (
@@ -37,11 +37,10 @@ export default function AddBtn({ linkId }) {
             {Auth.loggedIn() ? (
                     <button type="button"
                         onClick={() => handleAddLink(linkId)}
-                        class="inline-block px-6 py-4 bg-transparent font-semibold 
-                        text-md uppercase rounded text-bold hover:bg-[#0081A7] focus:bg-gray-100 focus:outline-none 
-                focus:ring-0 active:bg-[#0081A7] transition text-bold duration-150 ease-in-out">Add To Library</button>) :
+                        class="inline-block px-6 py-4 bg-[#0081A7] font-semibold 
+                        text-md uppercase rounded text-bold hover:bg-[#00AFB9]
+                 active:bg-[#00AFB9] text-bold ">Add To Library</button>) :
                 (<p>Log in to add this link to your library </p>)}
-
 
         </div>
 

@@ -47,40 +47,50 @@ export default function Why() {
 
     return (
 
-        <section className="pt-48 pb-20">
+        <section className="pt-40 pb-20">
+
+            <motion.div
+                initial={{ opacity: 0, }}
+                animate={{ opacity: 1, }}
+                transition={{
+                    duration: 3.5,
+                    delay: 0.25
+                }}
+            >
 
 
-            <h1 className=" mx-auto text-9xl font-light text-center">
-                Why?
-            </h1>
+                <h1 className=" mx-auto text-9xl font-light text-center">
+                    Why?
+                </h1>
 
-            <div className="grid grid-col-3 mx-auto max-w-100  px-6 lg:px-8 pb-20">
+                <div className="grid grid-col-3 mx-auto max-w-100  px-6 lg:px-8 pb-20">
 
-                <div className="col-span-2 col-start-2 pt-20 mx-auto content-end">
+                    <div className="col-span-2 col-start-2 pt-20 mx-auto content-end">
 
-                    <p className="text-2xl">
-                        This is the question many ask before sacrificing steaks and pork chops.
+                        <p className="text-2xl">
+                            This is the question many ask before sacrificing steaks and pork chops.
+                        </p>
+                    </div>
+
+                    <p className="col-span-2 mt-6 pt-10 text-2xl ">
+                        Why should I transition to a plant based lifestyle?
                     </p>
+
+                    <p className="col-span-2 col-start-2 mt-6 pt-10 text-2xl">
+                        There are many benefits to leading a plant based lifestyle. From the health benefits to the environmental impacts and ethical implications.
+                        Below are some resources to some of the best arguments to leading a plant-based diet.
+                    </p>
+
                 </div>
 
-                <p className="col-span-2 mt-6 pt-10 text-2xl ">
-                    Why should I transition to a plant based lifestyle?
-                </p>
-
-                <p className="col-span-2 col-start-2 mt-6 pt-10 text-2xl">
-                    There are many benefits to leading a plant based lifestyle. From the health benefits to the environmental impacts and ethical implications.
-                    Below are resources categorized by the different advantages of leading a plant based lifestyle.
-
-                </p>
-
-            </div>
+            </motion.div>
 
             <div class="grid grid-col-2 grid-flow-col text-center mx-auto">
 
                 <div class="col-span-1 text-center flex flex-col space-y-64 pt-10 place-items-end">
                     {why.map((data) => (
 
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 250 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -88,7 +98,7 @@ export default function Why() {
                                 type: 'spring',
                                 bounce: 0.25,
                                 duration: 2.5,
-                                delay: 0.5,
+                                delay: 0.25,
                                 ease: [0, 0.71, .5, 1.01]
                             }}>
 
@@ -121,16 +131,15 @@ export default function Why() {
 
                 <div class=" col-span-2 content-start">
                     {imagesPool.map((data) => (
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 250 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            // animate={{ y: 100 }}
                             viewport={{ once: true }}
                             transition={{
                                 type: 'spring',
                                 bounce: 0.25,
                                 duration: 2.5,
-                                delay: 0.5,
+                                delay: 0.25,
                                 ease: [0, 0.71, .5, 1.01]
                             }}>
 

@@ -21,7 +21,7 @@ export default function How() {
 
     const handleAddLink = async (linkId) => {
         // get token
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        const token = Auth.loggedIn() ? Auth.getToken() : linkId;
         console.log(linkId);
         if (!token) {
             return false;
@@ -76,28 +76,39 @@ export default function How() {
 
         <section className="pt-48 pb-20">
 
-            <h1 className=" col-span-2 mx-auto text-9xl font-light text-center">
-                How?
-            </h1>
+            <motion.div
+                initial={{ opacity: 0, }}
+                animate={{ opacity: 1, }}
+                transition={{
+                    duration: 3.5,
+                    delay: 0.25,
+                    //ease: [0, 0.1, .5, 1.01]
+                }}
+            >
 
-            <div className="grid grid-col-3 mx-auto max-w-100  px-6 lg:px-8 pb-20">
+                <h1 className=" col-span-2 mx-auto text-9xl font-light text-center">
+                    How?
+                </h1>
 
-                <div className="col-span-2 col-start-2 pt-20 content-end">
+                <div className="grid grid-col-3 mx-auto max-w-100  px-6 lg:px-8 pb-20">
 
-                    <p className="text-2xl">
-                        How do you transition to a plant-based diet and lifestyle? How do I make delicious plant-based foods?
-                        How do I stay full on a plant-based diet? How do I get enough protein in my diet? I dont like salads, how I make something that I like?
-                        How do I subsitute eggs in my favorite baked goods? How do I veganize my favorite foods?
+                    <div className="col-span-2 col-start-2 pt-20 content-end">
+
+                        <p className="text-2xl">
+                            How do you transition to a plant-based diet and lifestyle? How do I make delicious plant-based foods?
+                            How do I stay full on a plant-based diet? How do I get enough protein in my diet? I dont like salads, how I make something that I like?
+                            How do I subsitute eggs in my favorite baked goods? How do I veganize my favorite foods?
+                        </p>
+                    </div>
+
+                    <p className="col-span-2 mt-6 pt-10 text-2xl">
+                        Whether you like eating hamburgers or tamales, curry or sherpard's pie, there are plant-based versions of everything that you can imagine.
+                        Below are some vegan food blogs to get you started on your plant-based journey.
                     </p>
+
                 </div>
 
-                <p className="col-span-2 mt-6 pt-10 text-2xl">
-                    Whether you like eating hamburgers or tamales, curry or sherpard's pie, there are plant-based versions of everything that you can imagine.
-                    Below are some vegan food blogs to get you started on your plant-based journey.
-                </p>
-
-
-            </div>
+            </motion.div>
 
 
             <div class="grid grid-col-2 grid-flow-col text-center mx-auto">
@@ -113,7 +124,7 @@ export default function How() {
                                 type: 'spring',
                                 bounce: 0.25,
                                 duration: 2.5,
-                                delay: 0.5,
+                                delay: 0.25,
                                 ease: [0, 0.71, .5, 1.01]
                             }}>
 
@@ -147,19 +158,18 @@ export default function How() {
 
                 <div class=" col-span-2 content-start">
                     {imagesPool.map((data) => (
-                        <motion.div 
-                        initial={{ opacity: 0, y: 250 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        // animate={{ y: 100 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            type: 'spring',
-                            bounce: 0.25,
-                            duration: 2.5,
-                            delay: 0.5,
-                            ease: [0, 0.71, .5, 1.01]
-                        }}>
-                        <img className="mx-auto col-span-1 w-auto h-[29rem] pb-24 rounded-lg" src={data.src} />
+                        <motion.div
+                            initial={{ opacity: 0, y: 250 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                type: 'spring',
+                                bounce: 0.25,
+                                duration: 2.5,
+                                delay: 0.25,
+                                ease: [0, 0.71, .5, 1.01]
+                            }}>
+                            <img className="mx-auto col-span-1 w-auto h-[29rem] pb-24 rounded-lg" src={data.src} />
                         </motion.div>
                     ))}
                 </div>
