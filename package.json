@@ -10,7 +10,7 @@
     "build": "cd client && npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Quintero",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.6.0"
