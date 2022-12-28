@@ -74,18 +74,16 @@ export default function How() {
 
     return (
 
-        <section className="pt-48 pb-20">
+        <section className="pt-40 pb-20">
 
             <motion.div
-                initial={{ opacity: 0, }}
-                animate={{ opacity: 1, }}
+                initial={{ opacity: 0, y: -50}}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                    duration: 3.5,
+                    duration: 3.0,
                     delay: 0.25,
-                    //ease: [0, 0.1, .5, 1.01]
                 }}
             >
-
                 <h1 className=" col-span-2 mx-auto text-9xl font-light text-center">
                     How?
                 </h1>
@@ -117,13 +115,13 @@ export default function How() {
                     {how.map((data) => (
 
                         <motion.div
-                            initial={{ opacity: 0, y: 250 }}
+                            initial={{ opacity: 0, y: 100 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{
                                 type: 'spring',
                                 bounce: 0.25,
-                                duration: 2.5,
+                                duration: 1.5,
                                 delay: 0.25,
                                 ease: [0, 0.71, .5, 1.01]
                             }}>
@@ -159,13 +157,13 @@ export default function How() {
                 <div class=" col-span-2 content-start">
                     {imagesPool.map((data) => (
                         <motion.div
-                            initial={{ opacity: 0, y: 250 }}
+                            initial={{ opacity: 0, y: 100 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{
                                 type: 'spring',
                                 bounce: 0.25,
-                                duration: 2.5,
+                                duration: 1.5,
                                 delay: 0.25,
                                 ease: [0, 0.71, .5, 1.01]
                             }}>

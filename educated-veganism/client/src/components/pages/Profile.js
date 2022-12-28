@@ -8,11 +8,10 @@ import Auth from '../../utils/auth';
 export default function Profile() {
 
     const { loading, data } = useQuery(QUERY_ME);
-
     const me = data?.me || {};
     const links = data?.me.links || [];
-
-    console.log(me.links);
+    const notes = data?.me.notes || [];
+    console.log(notes);
 
     const [noteData, setNoteData] = useState({
         note: ""
@@ -27,9 +26,12 @@ export default function Profile() {
 
     const handleNoteSubmit = async (event) => {
         event.preventDefault();
+        console.log(event.target.dataset.linkid);
+        const linkId = event.target.dataset.linkid;
+
         try {
             const { data } = await addNote({
-                variables: { ...noteData }
+                variables: { ...noteData, linkId }
             })
             console.log(data)
             Auth.login(data.addNote.token)
@@ -67,8 +69,6 @@ export default function Profile() {
                 {Auth.loggedIn() && me ? (
                     < div className='py-10'>
                         {links.map((link) => (
-
-
                             <div key={link._id} className=" flex justify-center py-4">
 
                                 <div className=" grid grid-col-2 block p-6 rounded-lg shadow-lg border-[#0081A7] bg-white w-3/4 ">
@@ -84,12 +84,20 @@ export default function Profile() {
 
                                     </div>
 
-                                    <div className="col-span-1 col-start-2">
-                                        <h3> Your Notes </h3>
+                                    <div className="col-span-1 ">
+                                        <h3 className="pt-4 text-lg"> Insights </h3>
 
-                                        <p>{me.notes.note}</p>
+                                        
 
-                                        <form onSubmit={handleNoteSubmit}>
+                                        {notes.map(note => {
+                                            return (
+                                                <p className='p-2'>
+                                                    {note.note}
+                                                </p>
+                                            );
+                                        })}
+
+                                        <form onSubmit={handleNoteSubmit} data-linkid={link._id}>
                                             <div className="flex justify-center">
                                                 <div className="mb-3 xl:w-full">
                                                     <textarea
@@ -108,13 +116,7 @@ export default function Profile() {
                                             </a>
                                         </form>
 
-
-
-
-
                                     </div>
-
-
                                 </div>
                             </div>
                         ))}

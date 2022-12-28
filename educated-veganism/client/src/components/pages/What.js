@@ -27,13 +27,13 @@ export default function What() {
     const what = whatCategory?.filter(link => link.category === 'What')
 
     return (
-        <section className="pt-48 pb-20 max-w-100">
+        <section className="pt-40 pb-20 max-w-100">
 
             <motion.div
-                initial={{ opacity: 0, y: -30 }}
+                initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                    duration: 3.0,
+                    duration: 2.0,
                     delay: 0.5,
                     ease: [0, 0.71, .5, 1.01]
                 }}
@@ -58,14 +58,14 @@ export default function What() {
 
             <div class="grid grid-col-2 grid-flow-col gap-4 text-center mx-auto">
                 <motion.div
-                    initial={{ opacity: 0, y: 200 }}
+                    initial={{ opacity: 0, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     animate={{ y: 100 }}
                     viewport={{ once: true }}
                     transition={{
                         type: 'spring',
                         bounce: 0.25,
-                        duration: 2.5,
+                        duration: 1.5,
                         delay: 0.5,
                         ease: [0, 0.71, .5, 1.01]
                     }}>
@@ -104,14 +104,14 @@ export default function What() {
                 <div class=" col-span-1 content-start">
 
                     <motion.div
-                        initial={{ opacity: 0, y: 200 }}
+                        initial={{ opacity: 0, y: 100 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         animate={{ y: 100 }}
                         viewport={{ once: true }}
                         transition={{
                             type: 'spring',
                             bounce: 0.25,
-                            duration: 2.5,
+                            duration: 1.5,
                             delay: 0.5,
                             ease: [0, 0.71, .5, 1.01]
                         }}>

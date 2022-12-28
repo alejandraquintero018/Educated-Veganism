@@ -50,15 +50,13 @@ export default function Why() {
         <section className="pt-40 pb-20">
 
             <motion.div
-                initial={{ opacity: 0, }}
-                animate={{ opacity: 1, }}
+                initial={{ opacity: 0, y: -50}}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
-                    duration: 3.5,
+                    duration: 3.0,
                     delay: 0.25
                 }}
             >
-
-
                 <h1 className=" mx-auto text-9xl font-light text-center">
                     Why?
                 </h1>
@@ -91,15 +89,15 @@ export default function Why() {
                     {why.map((data) => (
 
                         <motion.div
-                            initial={{ opacity: 0, y: 250 }}
+                            initial={{ opacity: 0, y: 100 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{
                                 type: 'spring',
                                 bounce: 0.25,
-                                duration: 2.5,
+                                duration: 1.5,
                                 delay: 0.25,
-                                ease: [0, 0.71, .5, 1.01]
+                                //ease: [0, 0.71, .5, 1.01]
                             }}>
 
                             <div className=' text-center mx-auto border-2 pb-8 border-[#243c5a] min-w-max max-w-4xl max-h-52 rounded-lg'>
