@@ -2,23 +2,47 @@
 
 ## Description 
 
-With all of the misinformation on the internet surrounding veganism, its hard to find reliable information which demystifys veganism. This web application is a library of the the
+Veganism is a growing trend in the United States. Despite its growing popularity, many resources regarding veganism are extreme, biased and factually incorrect. It can be difficult to find credible information regarding veganism. This web application is a library of vegan resources which are categorized into the different questions one might have regarding veganism. What is veganism? Why consider a plant based lifestyle? How does one live a plant based life? The web application is intentionally left private to allow the user to explore veganism without the judgement from the internet. 
 
 ## Installation 
 
 Use the link below to access the web application. 
 
+https://young-everglades-48609.herokuapp.com/
+
 
 ## Usage 
 
-You will first be taken to the homepage. The user can access the library that are categorized by the links at the top of the webpage. If the user is not logged in. They will not be able to add a resource to thier library.
+The user will first be taken to the homepage. 
 
- If the user is logged in, they will be able to add a resource to thier library. When the user clicks on profile. It will take them to the login page if they are not signed in
+ 
+ ![alt text](asset/Homepage.png)
+
+The user can access the library of resources that are categorized by the links at the top of the webpage. If the user is not logged in, the resources can still be accessed but the user will not be able to add a resource to thier library.
+
+ ![alt text](asset/Why.png)
+
+When the user clicks on the profile page, they will be redirected to the login/registration page.
+
+ ![alt text](asset/Register.png)
+
+When the user logs in or registers, the user will be redirected to the homepage. When the user navigates the resources, the user is able to add resources to thier library. 
+
+ ![alt text](asset/Register.png)
+
+When a logged in user navigates to their profile, they can access their library and add notes to the resources. 
+
+ ![alt text](asset/Profile.png)
+
 
 
 ## Credits 
 
-I used a starter code file for the server, I used a third party website to create the Logo. I obtained help from Meg Meyers for help troubleshooting my application. I used EmailJS to add functionality to the suggestions page. 
+Starter code was used for the server.
+ I used a third party website to create the Logo. 
+ Meg Meyers contributed to troubleshooting my application. 
+EmailJS was used to add functionality to the suggestions page. 
+Framer motion was used to add animations to the webpages 
 
 ## License 
 
