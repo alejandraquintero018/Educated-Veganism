@@ -24,9 +24,9 @@ export default function Why() {
 
     if (loading) {
         return <div>
-            <div class="flex justify-center items-center pt-48 h-screen">
-                <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-[#FED9B7]" role="status">
-                    <span class="visually-hidden"></span>
+            <div className="flex justify-center items-center pt-48 h-screen">
+                <div className="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-[#FED9B7]" role="status">
+                    <span className="visually-hidden"></span>
                 </div>
             </div>
         </div>;
@@ -97,7 +97,6 @@ export default function Why() {
                                 bounce: 0.25,
                                 duration: 1.5,
                                 delay: 0.25,
-                                //ease: [0, 0.71, .5, 1.01]
                             }}>
 
                             <div className=' text-center mx-auto border-2 pb-8 border-[#243c5a] min-w-max max-w-4xl max-h-52 rounded-lg'>

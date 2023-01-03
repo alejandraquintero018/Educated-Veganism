@@ -13,6 +13,7 @@ export default function Profile() {
     const notes = data?.me.notes || [];
     console.log(notes);
     console.log(links);
+    console.log(me); 
 
     const [noteData, setNoteData] = useState({
         note: ""
@@ -35,7 +36,7 @@ export default function Profile() {
                 variables: { ...noteData, linkId }
             })
             console.log(data)
-            Auth.login(data.addNote.token)
+            //Auth.login(data.addNote.token)
         } catch (err) {
             console.log(err)
         }
@@ -51,13 +52,16 @@ export default function Profile() {
 
     if (loading) {
         return <div>
-            <div class="flex justify-center items-center pt-48 h-screen">
-                <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-[#FED9B7]" role="status">
-                    <span class="visually-hidden"></span>
+            <div className="flex justify-center items-center pt-48 h-screen">
+                <div className="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full text-[#FED9B7]" role="status">
+                    <span className="visually-hidden"></span>
                 </div>
             </div>
         </div>;
     }
+
+    // function editnotes()
+
 
     return (
 
@@ -76,7 +80,7 @@ export default function Profile() {
 
                                     <div className="col-span-1">
                                         <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">{link.name}</h5>
-                                        <p class="text-gray-700 text-base mb-4">
+                                        <p className="text-gray-700 text-base mb-4">
                                             {link.description}
                                         </p>
                                         <a target="_blank" href={link.link}>
@@ -88,13 +92,17 @@ export default function Profile() {
                                     <div className="col-span-1 ">
                                         <h3 className="pt-4 text-lg"> Insights </h3>
 
+                                        
+
                                         {notes.map(note => {
                                             return (
-                                                <p key={link._id} className='p-2'>
+                                                <p key={note.linkId} className='p-2'>
                                                     {note.note}
                                                 </p>
                                             );
                                         })}
+
+
 
                                         <form onSubmit={handleNoteSubmit} data-linkid={link._id}>
                                             <div className="flex justify-center">
@@ -105,7 +113,7 @@ export default function Profile() {
                                                         rows="2"
                                                         name="note"
                                                         type="input"
-                                                        value={noteData.note}
+                                                        value={noteData.note.linkId}
                                                         onChange={handleNoteChange}>
                                                     </textarea>
                                                 </div>
