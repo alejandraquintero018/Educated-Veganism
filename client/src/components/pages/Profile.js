@@ -12,6 +12,7 @@ export default function Profile() {
     const links = data?.me.links || [];
     const notes = data?.me.notes || [];
     console.log(notes);
+    console.log(links);
 
     const [noteData, setNoteData] = useState({
         note: ""
