@@ -54,12 +54,11 @@ export default function Contribute() {
                 </h1>
 
                 <p className=" text-lg py-10 col-span-2 mx-auto text-center">
-
+                    
                     Fill out the form below to suggest content that you believe would benefit others through thier plant-based journey.
                 </p>
 
                 <div className="w-1/2 mx-auto pb-20">
-
 
                     <form ref={form} onSubmit={sendEmail} action="#" method="POST" >
                         <div className="overflow-hidden shadow sm:rounded-md bg-white">

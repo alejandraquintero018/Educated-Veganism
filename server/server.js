@@ -33,6 +33,17 @@ app.get('*', (req, res) => {
 
 // Create a new instance of an Apollo server with the GraphQL schema
 
+//import { ApolloSandbox } from '@apollo/sandbox/react';
+  
+// export function EmbeddedSandbox() {
+//   return (
+//     <ApolloSandbox
+//       initialEndpoint='http://localhost:3002/graphql'
+//       includeCookies={false}
+//     />
+//   );
+// }
+
 const startApolloServer = async (typeDefs, resolvers) => {
 	await server.start();
 	server.applyMiddleware({ app });

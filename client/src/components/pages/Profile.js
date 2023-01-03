@@ -78,7 +78,7 @@ export default function Profile() {
                                         <p class="text-gray-700 text-base mb-4">
                                             {link.description}
                                         </p>
-                                        <a href={link.link}>
+                                        <a target="_blank" href={link.link}>
                                             <button type="button" className=" inline-block px-6 py-2.5 bg-[#0081A7] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#00AFB9] hover:shadow-lg focus:bg-orange-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Go to resource</button>
                                         </a>
 
@@ -87,11 +87,9 @@ export default function Profile() {
                                     <div className="col-span-1 ">
                                         <h3 className="pt-4 text-lg"> Insights </h3>
 
-                                        
-
                                         {notes.map(note => {
                                             return (
-                                                <p className='p-2'>
+                                                <p key={link._id} className='p-2'>
                                                     {note.note}
                                                 </p>
                                             );
@@ -121,6 +119,7 @@ export default function Profile() {
                             </div>
                         ))}
                     </ div>
+
                 ) : (null)}
 
             </div>

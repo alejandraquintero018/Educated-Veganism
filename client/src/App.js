@@ -44,6 +44,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+//const mongoose = require('mongoose')
+
 
 const navigation = [
   { name: 'What?', href: '/what' },
